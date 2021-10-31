@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ez.Memory" Version="0.2.0-alpha" />
+  </ItemGroup>
+	
+  <Import Project="..\build\common.props.csproj" />
+</Project>

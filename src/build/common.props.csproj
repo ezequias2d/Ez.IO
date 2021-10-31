@@ -1,0 +1,30 @@
+<Project>
+	<PropertyGroup>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>..\LICENSE</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/ezequias2d/Ez</PackageProjectUrl>
+		<Copyright>ezequias2d and Ez.IO contributors.</Copyright>
+		<Version>0.1.1-alpha</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageOutputPath>..\build\nupkgs</PackageOutputPath>
+		<PackageIcon>ez-gear2x.png</PackageIcon>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Ez</PackageTags>
+		<NeutralLanguage>en</NeutralLanguage>
+		<RepositoryUrl>https://github.com/ezequias2d/Ez</RepositoryUrl>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\build\ez-gear2x.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+</Project>
