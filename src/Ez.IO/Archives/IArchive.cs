@@ -17,6 +17,11 @@ namespace Ez.IO.Archives
         ArchiveMode Mode { get; }
 
         /// <summary>
+        /// Gets a value indicates that has been disposed.
+        /// </summary>
+        bool IsDisposed { get; }
+
+        /// <summary>
         /// Gets the collection of entries that are currently in the archive.
         /// </summary>
         /// <exception cref="NotSupportedException">The archive does not support reading.</exception>

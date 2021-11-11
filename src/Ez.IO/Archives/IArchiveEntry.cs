@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Ez.IO.Archives
 {
     /// <summary>
     /// Represents a file within a <see cref="IArchive"/>.
     /// </summary>
-    public interface IArchiveEntry
+    public interface IArchiveEntry : IDisposable
     {
         /// <summary>
         /// Gets the <see cref="IArchive"/> that the entry belongs to.
@@ -16,14 +14,19 @@ namespace Ez.IO.Archives
         IArchive Archive { get; }
 
         /// <summary>
+        /// Gets a value indicates that has been disposed.
+        /// </summary>
+        bool IsDisposed { get; }
+
+        /// <summary>
         /// Gets the size of the entry in the <see cref="IArchive"/>.
         /// </summary>
         long Length { get; }
 
         /// <summary>
-        /// The 32-bit Cyclic Redundant Check.
+        /// Gets the compressed size of the entry in the archive.
         /// </summary>
-        uint Crc32C { get; }
+        long CompressedLength { get; }
 
         /// <summary>
         /// Gets the file name of the entry in the <see cref="IArchive"/>.
