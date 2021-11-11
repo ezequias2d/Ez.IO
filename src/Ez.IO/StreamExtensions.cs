@@ -72,21 +72,11 @@ namespace Ez.IO
         /// </summary>
         /// <typeparam name="T">The type of items in the returned <see cref="ReadOnlySpan{T}"/>.</typeparam>
         /// <param name="stream">The stream to read.</param>
-        /// <param name="count">The count of T items to read.</param>
+        /// <param name="span">The span to write for..</param>
         /// <returns>A <see cref="ReadOnlySpan{T}"/> with items read from the <paramref name="stream"/>.</returns>
-        public static ReadOnlySpan<T> ReadSpan<T>(this Stream stream, uint count) where T : unmanaged
+        public static void ReadSpan<T>(this Stream stream, Span<T> span) where T : unmanaged
         {
-            if (count == 0)
-                return Array.Empty<T>();
-
-            var array = MemUtil.Cast<byte, T>(ArrayPool<byte>.Shared.Rent((int)(count * MemUtil.SizeOf<T>()))).Slice(0, (int)count);
-
-            byte[] buffer = new byte[count * MemUtil.SizeOf<T>()];
-            stream.Read(buffer, 0, buffer.Length);
-
-            MemUtil.Copy<T, byte>(array, buffer);
-
-            return array;
+            stream.Read(MemUtil.Cast<T, byte>(span));
         }
 
         /// <summary>
@@ -97,10 +87,9 @@ namespace Ez.IO
         /// <param name="value">The T structure to written.</param>
         public static void WriteStructure<T>(this Stream stream, T value) where T : unmanaged
         {
-            var buffer = new byte[MemUtil.SizeOf<T>()];
-            var span = MemUtil.Cast<byte, T>(buffer);
-            span[0] = value;
-            stream.Write(buffer, 0, buffer.Length);
+            Span<T> buffer = stackalloc T[1];
+            buffer[0] = value;
+            stream.WriteSpan<T>(buffer);
         }
 
         /// <summary>
@@ -111,10 +100,9 @@ namespace Ez.IO
         /// <returns>A structure read from the stream.</returns>
         public static T ReadStructure<T>(this Stream stream) where T : unmanaged
         {
-            byte[] buffer = new byte[MemUtil.SizeOf<T>()];
-            stream.Read(buffer, 0, buffer.Length);
-            var span = MemUtil.Cast<byte, T>(buffer);
-            return span[0];
+            Span<T> buffer = stackalloc T[1];
+            stream.Read(MemUtil.Cast<T, byte>(buffer));
+            return buffer[0];
         }
 
         /// <summary>
