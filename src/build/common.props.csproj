@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com/ezequias2d/Ez</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/ezequias2d/Ez.IO</PackageProjectUrl>
 		<Copyright>ezequias2d and Ez.IO contributors.</Copyright>
 		<Version>0.3.0-alpha</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -11,7 +11,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>Ez</PackageTags>
 		<NeutralLanguage>en</NeutralLanguage>
-		<RepositoryUrl>https://github.com/ezequias2d/Ez</RepositoryUrl>
+		<RepositoryUrl>https://github.com/ezequias2d/Ez.IO</RepositoryUrl>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
